@@ -48,24 +48,26 @@ public class MIUIUtils {
 
 
     public static boolean isMIUI() {
-        if(hasChecked)
+          if(hasChecked)
         {
             return isMIUI;
         }
 
-        Properties prop= new Properties();
 
-        try {
-            prop.load(new FileInputStream(new File(Environment.getRootDirectory(), "build.prop")));
-        } catch (IOException e)
-        {
-            e.printStackTrace();
-            return false;
-        }
-
-        isMIUI= prop.getProperty(KEY_MIUI_VERSION_CODE, null) != null
-        || prop.getProperty(KEY_MIUI_VERSION_NAME, null) != null
-        || prop.getProperty(KEY_MIUI_INTERNAL_STORAGE, null) != null;
+     isMIUI =  "Xiaomi".equals( Build.MANUFACTURER) || "Xiaomi".equals(Build.MODEL);
+//        Properties prop= new Properties();
+//
+//        try {
+//            prop.load(new FileInputStream(new File(Environment.getRootDirectory(), "build.prop")));
+//        } catch (IOException e)
+//        {
+//            e.printStackTrace();
+//            return false;
+//        }
+//
+//        isMIUI= prop.getProperty(KEY_MIUI_VERSION_CODE, null) != null
+//        || prop.getProperty(KEY_MIUI_VERSION_NAME, null) != null
+//        || prop.getProperty(KEY_MIUI_INTERNAL_STORAGE, null) != null;
 
         hasChecked = true;
 
